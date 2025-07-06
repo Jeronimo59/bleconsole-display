@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <esp32_smartdisplay.h>
 
-#include "../squareline/exported/ui.h"
+#include "ui.h"
 #include <core/lv_global.h>
 #include <misc/lv_log.h>
 
@@ -28,7 +28,7 @@ void setup()
    /** setup logs */
    lv_log_register_print_cb(my_log_cb);
 
-   lv_log("\n*************** bleconsole ****************");
+   lv_log("\n*************** bleconsole 0.1 ****************");
 }
 
 auto lv_last_tick = millis();
