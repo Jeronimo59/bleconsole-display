@@ -70,6 +70,7 @@
 #if LV_USE_STDLIB_MALLOC == LV_STDLIB_BUILTIN
     /** Size of memory available for `lv_malloc()` in bytes (>= 2kB) */
     #define LV_MEM_SIZE (64 * 1024U)          /**< [bytes] */
+    //#define LV_MEM_SIZE (128U * 1024U)          /**< [bytes] */
 
     /** Size of the memory expand for `lv_malloc()` in bytes */
     #define LV_MEM_POOL_EXPAND_SIZE 0
@@ -376,7 +377,7 @@
      *  - LV_LOG_LEVEL_ERROR    Log only critical issues, when system may fail.
      *  - LV_LOG_LEVEL_USER     Log only custom log messages added by the user.
      *  - LV_LOG_LEVEL_NONE     Do not log anything. */
-    #define LV_LOG_LEVEL LV_LOG_LEVEL_WARN
+    #define LV_LOG_LEVEL LV_LOG_LEVEL_INFO
 
     /** - 1: Print log with 'printf';
      *  - 0: User needs to register a callback with `lv_log_register_print_cb()`. */
@@ -866,9 +867,9 @@
 #endif
 
 /** API for FATFS (needs to be added separately). Uses f_open, f_read, etc. */
-#define LV_USE_FS_FATFS 0
+#define LV_USE_FS_FATFS 1
 #if LV_USE_FS_FATFS
-    #define LV_FS_FATFS_LETTER '\0'     /**< Set an upper-case driver-identifier letter for this driver (e.g. 'A'). */
+    #define LV_FS_FATFS_LETTER 'S'     /**< Set an upper-case driver-identifier letter for this driver (e.g. 'A'). */
     #define LV_FS_FATFS_PATH ""         /**< Set the working directory. File/directory paths will be appended to it. */
     #define LV_FS_FATFS_CACHE_SIZE 0    /**< >0 to cache this number of bytes in lv_fs_read() */
 #endif
@@ -896,7 +897,7 @@
 /** API for Arduino Sd. */
 #define LV_USE_FS_ARDUINO_SD 0
 #if LV_USE_FS_ARDUINO_SD
-    #define LV_FS_ARDUINO_SD_LETTER '\0'  /**< Set an upper-case driver-identifier letter for this driver (e.g. 'A'). */
+    #define LV_FS_ARDUINO_SD_LETTER 'S'  /**< Set an upper-case driver-identifier letter for this driver (e.g. 'A'). */
     #define LV_FS_ARDUINO_SD_PATH ""      /**< Set the working directory. File/directory paths will be appended to it. */
 #endif
 
@@ -910,10 +911,11 @@
 #define LV_USE_LODEPNG 0
 
 /** PNG decoder(libpng) library */
-#define LV_USE_LIBPNG 0
+//#define LV_USE_LIBPNG 1
+#define LV_USE_PNG 1
 
 /** BMP decoder library */
-#define LV_USE_BMP 0
+#define LV_USE_BMP 1
 
 /** JPG + split JPG decoder library.
  *  Split JPG is a custom format optimized for embedded systems. */
